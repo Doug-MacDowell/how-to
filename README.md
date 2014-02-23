@@ -2,9 +2,8 @@ how-to
 ======
 
 A 'how-to' application utilizing nested resources
-# Portfolio
 
-This is a basic how-to application built using Rails 4.0.2.
+This is a basic how-to application built using Rails 4.0.2 and utilizing nested resources.
 
 Current features include . . .
 
