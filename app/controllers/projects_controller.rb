@@ -1,12 +1,16 @@
 class ProjectsController < ApplicationController
 
   def new
+    @project = Project.new
   end
 
   def create
-    @project = Project.new(project_params)
-    @project.save
-    redirect_to @project
+    @project = Project.new(params[:project].permit(:title, :text))
+    if @project.save
+      redirect_to @project
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -15,6 +19,20 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+  end
+
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:id])
+
+    if @project.update(params[:project].permit(:title, :text))
+      redirect_to @project
+    else
+      render 'edit'
+    end
   end
 
 private
